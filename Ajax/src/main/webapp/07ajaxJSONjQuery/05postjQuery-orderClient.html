@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="EUC-KR">
+	
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src = "/Ajax/10common/ajaxUtil02.js"></script>
+	<script type="text/javascript">
+	
+		//=======================================================//
+		// XMLHttpRequest Object GET
+		function getCustomerInfo(){
+			
+			createRequest();
+			
+			var name= $("#name").val();
+			var phone = $("#phone").val();
+			var url = "postJSON-orderServer.jsp";
+			
+			//request.open("POST", url, true);
+			
+			//request.onreadystatechange = updatePage;
+			
+			//request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+			
+			var queryString = "name=" + name + "&phone=" + phone;
+			
+			alert(queryString);
+			
+			openSendRequest(url,"POST",queryString,updatePage);
+		}
+		
+		//Call Back Method 
+		function updatePage(){
+			
+			if(request.readyState == 4){
+				
+			if(request.status == 200){
+				
+			var serverData = request.responseText;
+			
+			alert("server로 부터 받은내용: \n " + serverData);
+			
+			var JSONData = $.parseJSON(serverData);
+			//var displayValue = trim(serverData);
+			 
+			
+			//$($("span")[2]).text(serverData * $($("span")[1]).text());
+			
+			alert("JSONData: \n " + JSONData);
+			 
+			
+			 
+			var displayValue = "이름: " + JSONData.name + "\n" + "전화: " + JSONData.phone + "\n" + "주소: "
+								+ JSONData.address;
+			
+			$("#address").val(displayValue);
+					
+			}else {
+				 
+			alert("에러 발생: " + request.status );
+			}						
+		} 
+	} 
+		
+		
+$( function() {
+			
+			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$("textarea").focus();
+			
+			$("textarea").mouseover( function(){
+				
+				getCustomerInfo();
+				
+			});
+			
+			$("form")[0].reset(); 
+			
+});
+		
+	</script>
+	
+</head>
+
+<body onload="document.forms[0].reset()">
+
+   <form>
+   
+      <p>이 &nbsp;&nbsp;&nbsp;&nbsp; 름  :  
+            <input type="text" size="14" name="name"  id ="name"/>
+      </p>
+      
+      <p>전화번호 :  
+            <input type="text" size="14" name="phone"  id="phone"/>
+      </p>
+   
+      <p>주 &nbsp;&nbsp;&nbsp;&nbsp; 소 : </p>  
+   
+      <p>
+         <textarea    rows="3" cols="50" name="address" id="address" 
+                        onclick="javascript:getCustomerInfo()" >이름을 입력후 :: 여기에click...</textarea>   
+      </p>
+            
+          <p id="testInnerHtml">XXX<input type="submit" value="주문하기" id="submit"/>YYY</p>
+      
+   </form>
+   
+</body>
+
+</html>
+
+<!--
+ User Definition javascript  : trim() 공백제거 
+ 
+function trim(value) {
+ return value.replace(/^\s+|\s+$/g,"");
+}
+
+function ltrim(value) {
+ return value.replace(/^\s+/,"");
+}
+
+function rtrim(value) {
+ return value.replace(/\s+$/,"");
+} 
+
+- javascript 공백제거를 하는 trim() function 미제공
+- 정규표현식을 사용하여 공백을 제거한다.
+
+정규표현식
+^ - 처음시작(beginning of line)
+\s - 공백(whitespace character)
+$ - 끝라인(end of line)
+
+function trim(str) {  
+    return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');  
+}  
+String.prototype.trim = function() {  
+    return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');  
+}  
+-->

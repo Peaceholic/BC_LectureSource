@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="EUC-KR">
+	
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>	
+	<script type="text/javascript">
+	
+		//=======================================================//
+		// XMLHttpRequest Object GET
+		var request = null;
+		
+		function createRequest(){
+			try{
+				request = new XMLHttpRequest();
+				//Debug..
+				//alert ("XMLHttpRequest() 로 request instancet생성완료");
+			}catch(trymicrosoft){
+				try{
+					request = new ActiveXObject("Msxml2.XMLHTTP");
+					//Debug..
+					//alert ("ActiveXObject(Msxml2.XMLHTTP) 로 request instancet생성완료");
+				}catch(othermicrosoft){
+					try{
+						request =new ActiveXObject("Microsoft.XMLHTTP");
+						//Debug..
+						//alert ("new ActiveXObject(Microsoft.XMLHTTP) 로 request instancet생성완료");
+					}catch(failed){
+						request = null;
+					}
+				}
+			}
+			
+			if( request == null ){
+				alert ("request객체 생성시 error 발생함.");
+			}
+		}
+		
+		
+		function getSold(){
+			
+			createRequest();
+			
+			var url="calcServerAjax.jsp"
+			// 아래의 주석 풀고 url 잘못된 경우 확인
+			//var url="calcServerAjaxAAA.jsp"
+			
+			request.open("GET",url,true);
+			//request.open("GET",url,false);
+			
+			request.onreadystatechange = updatePage;
+			
+			request.send(null);
+			
+		}
+		
+		function updatePage(){
+			
+			if(request.readyState == 4){
+				
+				if(request.status == 200){
+				
+					var serverData = request.responseText;
+				
+					//serverData = trim(serverData);
+					serverData = $.trim(serverData);
+					
+					//debug
+					alert(" server로 부터 받은 판매개수 : "+serverData);
+					
+					/*
+					//변경시킬 판매갯수 element GET 
+	                var spanSoldElem = document.getElementById("sold");
+	   
+	               	//판매갯수변경
+	               	//==>spanSoldElem의 첫번째 자식노드 remove
+	           	    spanSoldElem.removeChild(spanSoldElem.firstChild);
+	            
+	               	//==>변경시킬 판매갯수를 text를 textNode생성
+	               	var newNode01 = document.createTextNode(serverData);
+	               	
+	               	//==> spanSoldElem에 차식노드추가  
+	                spanSoldElem.appendChild(newNode01);
+	               	*/
+	               	$("#sold").text(serverData);
+	               	
+	             	/*	   
+	                //총 매출금액 계산 및 변경
+	                //==> 판매단가 가져오기 
+	                var spanPriceElem = document.getElementById("price");
+	                
+	                //==> spanPriceElem의 첫번째 자식노드 value가져오니(==> 100원) 
+	                var price = spanPriceElem.firstChild.nodeValue;
+	                
+	                //==>매출 금액 계산 
+	                var cash = serverData * price;
+	                
+	                //변경시킬 매출금액  element 가저오기 
+	                var spanCashElem = document.getElementById("cash");
+	               	
+	                //총 매출 금액 변경하기.
+	               	//==>spanCashElem의 첫번째 자식노드 remove
+	               	spanCashElem.removeChild(spanCashElem.firstChild);
+	               
+	               	//==>변경시킬 판매갯수를 text를 textNode생성
+	               	var newNode02 = document.createTextNode(cash);
+	               
+	               	//==> spanSoldElem에 자식노드추가  
+	                spanCashElem.appendChild(newNode02);
+	               	*/
+	               	$("#cash").text(serverData * $("#price").text());
+				
+				} else{
+					
+					alert(" 애러발생 :: HttpStatusCode = " + request.status + " >> " + request.statusText);				
+					
+				}				
+			}
+		}
+		
+		$(function(){		
+			$("input:button").on("click", function(){
+				getSold();				
+			});			
+		});		
+		
+		
+		/*	function trim(str){}	*/
+		
+	</script>
+	
+</head>
+
+<body>
+
+   <h1> 판매 보고서</h1>
+
+   <table>
+      <tr>
+         <th>판매된 상품 갯수</th>
+         <td><span id="sold">100</span></td>
+      </tr>
+      <tr>
+         <th>상품 단가</th>
+         <td><span id="price">100</span>원</td>
+      </tr>
+   </table>
+   
+   <h2>총 매출금액  : <span id="cash">100,00원</span></h2>
+   
+   <form  method="POST" action="calcServerNormal.jsp">
+      <input type="submit" value="판매보고서 다시보기(기존방식)">
+   </form>
+   
+   <form>
+      <!-- <input type="button" value="판매보고서 다시보기(ajax적용)"  onClick="javascript:getSold()"> -->
+      <input type="button" value="판매보고서 다시보기(ajax적용)">
+      
+   </form>
+
+</body>
+
+</html>

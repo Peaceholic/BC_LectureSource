@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<!-- 
+	■ 일반적 javascript / html 작성 
+		==> Coupling Script
+	■ static contents + dynamic contents 가 뒤섞여 있다
+	■ html 과 javascript 분리하자
+ -->
+<html>
+	
+<head>
+	<meta charset="EUC-KR">
+
+	<script src="../javascript/jquery-2.1.4.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	
+	$(function(){
+		
+		$("td").click(function(){
+			$(this).hide();
+		})
+		
+		$("td:last").click(function(){
+			self.location = "03JQueryFramework.html";
+		})		
+	});
+			
+	</script>		
+	
+</head>
+
+<body>
+
+	
+	<table>
+		<tr>
+			<td>1. 글릭해 보세요.</td>
+		</tr>
+		
+		<tr>
+			<td>2. 글릭해 보세요.</td>
+		</tr>
+		
+		<tr>
+			<td>3. 글릭해 보세요.</td>
+		</tr>
+		<tr>
+			<td>초기화면 :: 다시 Request.... </td>
+		</tr>
+	</table>
+
+
+</body>
+	
+</html>

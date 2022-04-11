@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="EUC_KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>  
+
+	<h2>&nbsp;&nbsp;&nbsp;&nbsp; AddUser </h2>
+	<form method="Post" action='addUser.jsp'>
+		
+# DB-TableName &nbsp; : &nbsp; memberhw01
+<br><br>	
+    
+[ Number ] &nbsp;&nbsp;&nbsp; (regNum) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* 등록번호 : &nbsp;&nbsp;&nbsp;
+<input type="text" name="regNum"/>
+<br><br>
+
+[ Varchar2 ] &nbsp; (type) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* 구분 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select name=type>
+<option>사용자</option>
+<option>관리자</option>
+</select>
+<br><br>
+
+[ Varchar2 ] &nbsp; (id) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* ID : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="id"/>
+<br><br>
+        
+[ Varchar2 ] &nbsp; (pw) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* PW : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="pw"/>
+<br><br>
+
+[ Varchar2 ] &nbsp; (name) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* 이름 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="name"/>
+<br><br>
+        
+[ Varchar2 ] &nbsp; (gender) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* 성별 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+남자 <input type="radio" name="gender" value="남자	" checked />
+여자 <input type="radio" name="gender" value="여자" />
+<br><br>
+
+
+[ Number ] &nbsp;&nbsp;&nbsp; (phone 1, 2, 3) &nbsp;&nbsp;
+* 연락처 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span><input type="text" name="phone1"/></span>&nbsp;&nbsp; - &nbsp;&nbsp;
+<span><input type="text" name="phone2"/></span>&nbsp;&nbsp; - &nbsp;&nbsp;
+<span><input type="text" name="phone3"/></span>
+<br><br>
+
+
+
+<span><a href='/homework03'>Folder</a></span>&nbsp;&nbsp;&nbsp;
+<span><a href='/homework03/homework03/addUser.html'>초기화</a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type='submit' value='회원가입 신청' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='reset' value='회원가입 취소'/>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">		
+ 					
+<mapper namespace="UserMapper02">
+
+	<!-- 위의  namespace 이용 Application 에서 UserMapper.~~ 로 아래의 SQL 을 참조  
+	 	  :: 아래의 query 수행 후 결과 resultType 에 선언된 User Domain Object 
+	 	   	  Field ( property )에 자동연결(?,바인딩)
+	 	  :: SQL / Query 의 Alias 와 User Domain Object 의 Field 이름 동일한 것 확인.  -->
+  	
+  	<select id="getUserList01" 	resultType="user" parameterType="string">
+		SELECT
+		user_id 	AS userId, <!-- OGNL, set을 불러서 셋팅함 -->
+		user_name 	AS userName,
+		password 	AS password,
+		age 		AS age,
+		grade		AS grade,
+		reg_date 	AS regDate
+		FROM users   
+		WHERE user_id like #{value}											
+  	</select>
+  	
+  	<select id="getUserList02" parameterType="string" resultType="user">
+  		SELECT
+		user_id 	AS userId, <!-- OGNL, set을 불러서 셋팅함 -->
+		user_name 	AS userName,
+		password 	AS password,
+		age 		AS age,
+		grade		AS grade,
+		reg_date 	AS regDate
+		FROM users 
+		WHERE user_id LIKE '%${value}%'
+  	</select>
+	
+	<select id="findUser" parameterType="string" resultType="string">
+  		SELECT
+		user_name
+		FROM users 
+		WHERE ${value}
+  	</select>
+
+</mapper>

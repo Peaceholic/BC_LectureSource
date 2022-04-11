@@ -1,0 +1,33 @@
+
+<<< OOP의 이해 / Report 제출 >>>
+
+1. OOP(Object Oriented Programming)
+
+2. Object(객체)
+
+3. Class 
+
+4. abstraction(추상화)
+
+5. Generalization(일반화) / Inheritance(상속)
+
+6.  Specialization(구체적)
+
+7. Realization
+
+8. Association
+
+9. dependency
+
+10, Polymorphism
+
+11. Encapuslation / 절차은익 / 정보은익
+
+
+==>  report 제출 condition  <==
+==>제출 FileName : OOPreport.txt
+==> 편집기 : editplus
+==> font : 돋움체 , fontSize : 12 , 글꼴 : Reqular
+==> 문서/영구적설정/파일/설정및 구문강조/자동줄바꿈/자동줄바꿈check
+==> File/인쇄설정/ 위,아래,왼쪽,오른쪽 여백 모두 1.0cm
+==> A4용지 단면 2장분량

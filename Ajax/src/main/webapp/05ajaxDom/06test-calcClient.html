@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="EUC-KR">
+	
+	<script type="text/javascript" src="/Ajax/10common/ajaxUtil02.js"></script>
+	<script type="text/javascript" src="/Ajax/10common/domUtil04.js"></script>
+	<script type="text/javascript">
+	
+		//=======================================================//
+		// XMLHttpRequest Object GET
+		var request = null;
+		
+		function getSold(){
+			
+			createRequest();
+			
+			var url="../02ajaxBase/calcServerAjax.jsp"
+			// 아래의 주석 풀고 url 잘못된 경우 확인
+			//var url="calcServerAjaxAAA.jsp"
+			
+			var queryString = null;
+
+			openSendRequest(url, "POST", queryString, updatepage);
+			
+		}
+		
+		function updatePage(){
+			
+			if(request.readyState == 4){
+				
+				if(request.status == 200){
+				
+					var serverData = request.responseText;
+				
+					serverData = trim(serverData);
+					//debug
+					alert(" == updatePage() = "+serverData);
+					
+					//변경시킬 판매갯수 element GET 
+	                var spanSoldElem = document.getElementById("sold");
+	   
+	               	//판매갯수변경
+	               	//==>spanSoldElem의 첫번째 자식노드 remove
+	           	    replaceText(spanSoldElem, serverData);
+	               	
+	           	  	//총 매출금액 계산 및 변경
+	                //==> 판매단가 가져오기 
+	               	var spanPriceElem = document.getElementById("price");
+	               	var price="";
+	               	
+	               	price = price+getText(spanPriceElem);
+	                
+	               	//==>매출 금액 계산 
+	               	var cash = serverData*price;
+	               	
+	            	var spanCashElem = document.getElementById("cash");
+	            
+	                //총 매출 금액 변경하기.
+	                replaceText(spanCashElem, cash);
+	          
+				} else{
+					
+					alert(" 애러발생 :: HttpStatusCode = " + request.status + " >> " + request.statusText);				
+					
+				}				
+			}
+		}
+		
+		function trim(str){
+			return str.replace(/^\s\s*/,").replace(/\s\s*$/,");
+		}
+		
+	</script>
+	
+</head>
+
+<body>
+
+   <h1> 판매 보고서</h1>
+
+   <table>
+      <tr>
+         <th>판매된 상품 갯수</th>
+         <td><span id="sold">100</span></td>
+      </tr>
+      <tr>
+         <th>상품 단가</th>
+         <td><span id="price">100</span>원</td>
+      </tr>
+   </table>
+   
+   <h2>총 매출금액  : <span id="cash">100,00원</span></h2>
+   
+   <form  method="POST" action="calcServerNormal.jsp">
+      <input type="submit" value="판매보고서 다시보기(기존방식)">
+   </form>
+   
+   <form>
+      <input type="button" value="판매보고서 다시보기(ajax적용)"  onClick="javascript:getSold()">
+   </form>
+
+</body>
+
+</html>

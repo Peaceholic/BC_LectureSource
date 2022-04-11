@@ -1,0 +1,109 @@
+
+<<< OOP의 이해 / Report 제출 >>>
+
+1. OOP(Object Oriented Programming)
+
+>> 기계적인 작동에 가까운 순차적 실행를 위한 프로그램 개발 방식이 아닌 
+   현실 속의 하나의 로건, 행위 또는 하나의 요소로 각 각 모듈화 해서 
+   각 모듈이 쓰여진 코드 순서보다 모듈간 상호작용을 하여 실행되는 방식   
+
+   절차지향 : Procedure Oriented Programming(POP)
+   객체지향 : Object Oriented Programming(OOP)
+
+   절차지향 언어를 사용한다면, 실행 순서, 즉 절차가 더 중점이 되고,
+   객체지향 언어를 사용한다면, 필요한 객체들의 종류와 속성 등이 더 중점이 된다.
+
+   객체지향은 절차지향처럼 '절차'를 따르지만 객체라는 특이점이 더 강조된다.
+   절차지향에서 따로따로 노는 데이터와 함수 등이 한 데로 묶여있을 뿐만 아니라,
+   객체의 데이터에 접근 제어를 걸어 각자의 보안성 지정도 가능
+
+
+2. Object(객체)
+
+>> 현실세계를 프로그래밍화 하기 위해 각 요소별로 개념을 정리해놓은 것
+
+   Object에는 Class, Method, Instance, Attribute 의 정보들이 포함  
+   Class는 어떠한 객체를 규정하는 전체 구조
+   Method는 어떠한 행동을 규정하는 기능(function)
+   Instance는 특정 Class에 속하는 객체
+   Attribute는 특정 Class 또는 Instance의 특성을 설명하는 변수(Variables)
+
+
+3. Class 
+
+>> 각 요소별 개념정리가 된 것을 담기 위한 자료구조
+
+   객체를 정의하는 틀 또는 설계도와 같은 의미로 사용.
+   Class를 이용 여러 객체를 생성하여 사용
+   객체의 상태를 나타내는 Field 와 객체의 행동을 나타내는 Method로 구성
+
+   Field란 Class에 포함된 변수(Variables)를 의미
+   Method란 어떠한 특정 작업을 수행하기 위한 명령문의 집합
+
+
+4. abstraction(추상화)
+
+>> 서로 각기 다른 요소중 동일한 내용만을 추려 정리라는 과정
+
+   자식 클래스에서 반드시 오버라이딩해야만 사용할 수 있는 메소드를 의미
+   추상 Method를 선언하여 사용하는 목적은 추상 Method가 포함된 Class를 상속받는 
+   자식 Class가 반드시 추상 Method를 구현하도록 하기 위함
+   모듈처럼 중복되는 부분이나 공통적인 부분은 미리 다 만들어진 것을 사용하고,
+   이를 받아 사용하는 쪽에서는 자신에게 필요한 부분만을 재정의하여 사용함으로
+   생산성이 향상되고 배포 등이 용이 
+   추상 Method는 선언부만이 존재하며, 구현부는 작성되어 있지 않음
+   이 작성되어 있지 않은 구현부를 자식-Class에서 오버라이딩하여 사용
+
+
+5. Generalization(일반화) / Inheritance(상속)
+
+>> 서로 하기 다른 요소 중 공통적인 내용을 추려 상위 요소 개념으로 정리하는 것
+
+    Sub-Class의 공통 코드를 추출하여 Super-Class를 만드는것
+
+
+6.  Specialization(구체적)
+
+>> 서로 각기 다른 요소 중 공통적인 내용을 추려 하위 요소 개념으로 정리하는 것
+
+    Super-Class를 상속받아 Sub-Class를 만드는것
+
+
+7. Realization
+
+>> Interface에 있는 Spec을 오버라이딩하여 실제로 구현하는 것
+
+
+8. Association
+
+>> Class 다이어그램에서의 Association은 다른 객체의 참조를 가지는 필드를 의미
+
+
+9. Dependency
+
+>> Class간의 참조가 일어나는 것 중 하나. 
+   Dependency 참조는 Method 내에서 대상 Class의 객체를 생성/리턴받아 사용 
+   그리고 이 참조는 해당 클래스와의 관계를 계속 유지하지 않음
+
+
+10, Polymorphism
+
+>> 다형성(polymorphism)이란 하나의 객체가 여러 가지 타입을 가질 수 있는 것
+   부모-Class 타입의 참조 변수로 자식-Class 타입의 Instance를 참조 
+
+
+11. Encapuslation / 절차은익 / 정보은익
+
+>> 캡슐화는 관련이 있는 변수와 기능를 하나의 Class로 묶고 외부에서 
+   쉽게 접근하지 못하도록 은닉 객체에 직접적인 접근을 막고 외부에서 
+   내부의 정보에 직접접근하거나 변경할 수 없고, 
+   객체가 제공하는 필드와 Method를 통해서만 접근이 가능
+
+
+==>  report 제출 condition  <==
+==>제출 FileName : OOPreport.txt
+==> 편집기 : editplus
+==> font : 돋움체 , fontSize : 12 , 글꼴 : Reqular
+==> 문서/영구적설정/파일/설정및 구문강조/자동줄바꿈/자동줄바꿈check
+==> File/인쇄설정/ 위,아래,왼쪽,오른쪽 여백 모두 1.0cm
+==> A4용지 단면 2장분량

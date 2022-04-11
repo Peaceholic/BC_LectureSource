@@ -1,0 +1,25 @@
+** 테이블 생성
+
+CREATE TABLE member01
+(   
+regNum		NUMBER(20)		NOT NULL,
+name		VARCHAR2(20)	NOT NULL,
+gender		VARCHAR2(20),
+type		VARCHAR2(20)
+);
+
+
+** 데이터 생성
+
+INSERT INTO member01 (regNum, name, gender, type) VALUES (1, '홍길동', '남성', '공무원');
+
+select * from member01;
+
+set linesize 1000
+set pagesize 500
+
+
+** 서버 server.xml
+     <Context docBase="homework01" path="/homework01" reloadable="true" source="org.eclipse.jst.jee.server:homework01">
+     	 <Resource driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="100" maxIdle="10" maxWait="5000" name="jdbc/ora" password="tiger" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="scott" validationQuery="select * from tab"/>
+      </Context>
